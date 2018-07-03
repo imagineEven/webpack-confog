@@ -1,0 +1,18 @@
+body,html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  .content {
+    height: 16rem;
+    width: 16rem;
+    background-color: yellow;
+  }
+}
+
+.footWrap {
+  height: 200px;
+  width: 200px;
+  background: violet;
+}

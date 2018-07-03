@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="footer">
     我是footer里的组件
   </div>
 </template>
@@ -13,7 +13,7 @@
 </script>
 
 <style lang='scss'>
-  .home {
+  .footer {
     height: 100px;
     width: 100px;
     background: wheat;

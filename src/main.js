@@ -4,9 +4,9 @@ import Vue  from 'vue';
 import VueRouter from 'vue-router';
 import home from './home.vue';
 import fo from './fo.vue';
+require('./test.js');
 
 Vue.use(VueRouter);
-
 
 
 const router = new VueRouter({

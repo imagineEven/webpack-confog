@@ -5,12 +5,14 @@ import VueRouter from 'vue-router';
 import home from './home.vue';
 import fo from './fo.vue';
 import BootstrapVue from 'bootstrap-vue';
-
-require('./test.js');
-Vue.use(VueRouter);
-Vue.use(BootstrapVue);
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import Vuex from 'vuex';
+import store from './store/store';
+
+Vue.use(VueRouter);
+Vue.use(BootstrapVue);
+Vue.use(Vuex);
 
 const router = new VueRouter({
   mode: 'history',
@@ -23,7 +25,8 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   render: h => h(app),
-  router
+  router,
+  store
 });
 // (function(){})()
 //(function(){}())

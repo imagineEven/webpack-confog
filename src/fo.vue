@@ -12,7 +12,7 @@
   }
 </script>
 
-<style lang='scss'>
+<style>
   .footer {
     height: 100px;
     width: 100px;

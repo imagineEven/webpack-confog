@@ -9,7 +9,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import Vuex from 'vuex';
 import store from './store/store';
+import axios from 'axios';
+require('./comment/request.js');
 
+
+//require('./mongoose/mongoose.js');
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(Vuex);
@@ -27,6 +31,9 @@ new Vue({
   render: h => h(app),
   router,
   store
+});
+axios.get('/detail').then((data) => {
+  console.log(data);
 });
 // (function(){})()
 //(function(){}())

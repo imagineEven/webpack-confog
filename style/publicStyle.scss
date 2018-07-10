@@ -1,0 +1,35 @@
+body,html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+}
+
+.center_row {
+  display: flex;
+  justify-content: center;
+}
+
+.center_column {
+  display: flex;
+  align-items: center;
+}
+
+.white {
+  background:rgba(255,255,255,.5);
+}
+
+.radius {
+  border-radius: 8px;
+}
+
+.marginBottom {
+  margin-bottom: 30px;
+}

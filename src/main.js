@@ -1,4 +1,4 @@
-import '../style/example.scss';
+import '../style/publicStyle.scss';
 import app from './app.vue';
 import Vue  from 'vue';
 import VueRouter from 'vue-router';

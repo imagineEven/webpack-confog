@@ -10,7 +10,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import Vuex from 'vuex';
 import store from './store/store';
 import axios from 'axios';
-require('./comment/request.js');
+import apiServer from './comment/request.js';
 
 
 //require('./mongoose/mongoose.js');
@@ -32,9 +32,17 @@ new Vue({
   router,
   store
 });
-axios.get('/detail').then((data) => {
+
+
+apiServer({
+  url: 'detail',
+  method: 'get'
+}).then(data => {
   console.log(data);
 });
+// axios.get('/detail', {params: { key: '我的名字事陈学伟' }}).then((data) => {
+//   console.log(data);
+// });
 // (function(){})()
 //(function(){}())
 // (立刻执行函数)后面的括号为立即掉调用，前面的括号为：函数表达式的形式声明函数
@@ -52,6 +60,3 @@ axios.get('/detail').then((data) => {
 //   win.addEventListener(resizeEvt, recalc, false);
 //   doc.addEventListener('DOMContentLoaded', recalc, false);
 // })(document, window);
-
-
-

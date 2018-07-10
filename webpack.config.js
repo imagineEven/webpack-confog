@@ -2,8 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const mongoose = require('mongoose');
-// const express = require('express');
-// const apiRoutes = express.Router();
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -14,13 +12,7 @@ module.exports = {
     contentBase: './dist',
     port: 8083,
     before(apiRoutes) {
-      apiRoutes.get('/detail', (req, res) => {
-        mongoose.connect('mongodb://127.0.0.1/stus');
-        mongoose.connection.once('open', function() {
-          console.log('链接成功');
-        });
-        res.json('我是webpack里面的数据');
-      });
+      serverRoutes(apiRoutes);
     }
   },
   module: {
@@ -73,5 +65,20 @@ module.exports = {
     new webpack.DefinePlugin({
       'process': 'true'
     })
+    
+    //new webpack.HotModuleReplacementPlugin()//热加载插件
   ]
 };
+
+function serverRoutes (apiRoutes) {
+  apiRoutes.get('/all/detail', (req, res) => {
+    // mongoose.connect('mongodb://127.0.0.1/stus');
+    // mongoose.connection.once('open', function() {
+    //   console.log('链接成功');
+    // });
+    console.log(req.query);
+    console.log(typeof req.query);
+    console.log(req.query.key);
+    res.json('我是webpack里面的数据');
+  });
+}

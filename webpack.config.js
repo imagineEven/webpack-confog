@@ -50,6 +50,13 @@ module.exports = {
       ]
     },
     {
+      test: /\.(png|jpg|gif|svg)$/,
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]?[hash]'
+      }
+    },
+    {
       test: /\.js$/,
       include: [ // use `include` vs `exclude` to white-list vs black-list
         path.resolve(__dirname, 'src'), // white-list your app source files

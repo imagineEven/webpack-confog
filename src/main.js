@@ -2,7 +2,7 @@ import '../style/example.scss';
 import app from './app.vue';
 import Vue  from 'vue';
 import VueRouter from 'vue-router';
-import home from './home.vue';
+import home from './signIn.vue';
 import fo from './fo.vue';
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';

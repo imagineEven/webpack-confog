@@ -1,19 +1,35 @@
 <template>
-  <div class="sign_in_wrapper center">
-    <div class="sign_in_content white center">
-      <div class="sign_in_detail">
-        <b-form-input type="text" class="marginBottom"
-                      v-model="name"
-                      required
-                      placeholder="Enter name">
-        </b-form-input>
-        <b-form-input type="text" class="marginBottom"
-                      v-model="password"
-                      required
-                      placeholder="Enter password">
-        </b-form-input>
-      </div>
-    </div>
+  <div class="sign_in_wrapper center">  
+    <b-card no-body style="background:rgba(255,255,255,.8);">
+      <b-tabs pills card id="sign_in">
+        <b-tab title="sign in" active>
+            <b-form-input type="text" class="marginBottom"
+                          v-model="name"
+                          required
+                          placeholder="Enter name">
+            </b-form-input>
+            <b-form-input type="text" class="marginBottom"
+                          v-model="password"
+                          required
+                          placeholder="Enter password">
+            </b-form-input>
+            <b-button variant="success" style="width:100%;">Sure?</b-button>
+        </b-tab>
+        <b-tab title="sign up">
+            <b-form-input type="text" class="marginBottom"
+                          v-model="name"
+                          required
+                          placeholder="Enter name">
+            </b-form-input>
+            <b-form-input type="text" class="marginBottom"
+                          v-model="password"
+                          required
+                          placeholder="Enter password">
+            </b-form-input>
+            <b-button variant="success" style="width:100%;">Sure?</b-button>
+        </b-tab>
+      </b-tabs>
+    </b-card>
   </div>
 </template>
 
@@ -43,8 +59,29 @@ export default {
 }
 .sign_in_detail {
   width: 80%;
+
 }
-.sign_in_name{
+.sign_in_name {
   margin-bottom: 30px;
+}
+
+.tabs {
+  height: 400px;
+  width: 400px;
+
+  .card-header {
+  display: flex;
+  justify-content: center;
+  }
+
+  .nav-item {
+    margin: 0 20px;
+  }
+
+  .card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>

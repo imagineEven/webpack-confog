@@ -1,20 +1,22 @@
 const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const mongoose = require('mongoose');
-module.exports = {
+//const mongoose = require('mongoose');
+const htmlPlugin = require('html-webpack-plgin');
+const isDev = process.env.NODE_ENV === 'development';
+const config = {
   entry: './src/main.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  devServer: {
-    contentBase: './dist',
-    port: 8083,
-    before(apiRoutes) {
-      serverRoutes(apiRoutes);
-    }
-  },
+  // devServer: {
+  //   contentBase: './dist',
+  //   port: 8083,
+  //   before(apiRoutes) {
+  //     serverRoutes(apiRoutes);
+  //   }
+  // },
   module: {
     rules: [{
       test: /\.scss$/,
@@ -51,8 +53,9 @@ module.exports = {
     },
     {
       test: /\.(png|jpg|gif|svg)$/,
-      loader: 'file-loader',
+      loader: 'url-loader',
       options: {
+        limit: 1024,
         name: '[name].[ext]?[hash]'
       }
     },
@@ -67,10 +70,14 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
+    new htmlPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     // 在开发模式定义全局变量
     // 为什么叫做默认插件 就是因为是webpack自带的插件；
     new webpack.DefinePlugin({
-      'process': 'true'
+      'process.env': {
+        NODE_ENV: idDev ? '"development"' : '"production"'
+      }
     })
     
     //new webpack.HotModuleReplacementPlugin()//热加载插件
@@ -89,3 +96,19 @@ function serverRoutes (apiRoutes) {
     res.json('我是webpack里面的数据');
   });
 }
+
+if (isDev === 'development') {
+  config.devServer = {
+    port: 8083,
+    host: '0.0.0.0',
+    overlay: {
+      errors: true,
+    },
+    hot: true,
+    before(apiRoutes) {
+      serverRoutes(apiRoutes);
+    }
+  };
+}
+
+module.exports = config;

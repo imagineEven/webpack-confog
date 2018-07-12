@@ -1,5 +1,6 @@
 <template>
-  <div class="sign_in_wrapper center">  
+  <div class="sign_in_wrapper center">
+    <VueLoading></VueLoading>
     <b-card no-body style="background:rgba(255,255,255,.8);">
       <b-tabs pills card id="sign_in">
         <b-tab title="sign in" active>
@@ -34,6 +35,7 @@
 </template>
 
 <script>
+import VueLoading  from './components/loading.vue'
 export default {
   data() {
     return {
@@ -41,7 +43,10 @@ export default {
       password: ""
     };
   },
-  mounted() {}
+  mounted() {},
+  components: {
+    VueLoading
+  }
 };
 </script>
 

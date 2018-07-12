@@ -9,14 +9,13 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import Vuex from 'vuex';
 import store from './store/store';
-import axios from 'axios';
 import apiServer from './comment/request.js';
-
-
-//require('./mongoose/mongoose.js');
+import VueLoading from 'vue-loading-template';
+Vue.use(VueLoading);
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(Vuex);
+require('./comment/test.js');
 
 const router = new VueRouter({
   mode: 'history',

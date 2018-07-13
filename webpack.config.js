@@ -2,21 +2,26 @@ const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 //const mongoose = require('mongoose');
-const htmlPlugin = require('html-webpack-plgin');
+const htmlPlugin = require('html-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 const config = {
+  target: 'web',
   entry: './src/main.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  // devServer: {
-  //   contentBase: './dist',
-  //   port: 8083,
-  //   before(apiRoutes) {
-  //     serverRoutes(apiRoutes);
-  //   }
-  // },
+  devServer: {
+    port: 8083,
+    host: '0.0.0.0',
+    overlay: {
+      errors: true,
+    },
+    hot: true,
+    before(apiRoutes) {
+      serverRoutes(apiRoutes);
+    }
+  },
   module: {
     rules: [{
       test: /\.scss$/,
@@ -76,7 +81,7 @@ const config = {
     // 为什么叫做默认插件 就是因为是webpack自带的插件；
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: idDev ? '"development"' : '"production"'
+        NODE_ENV: isDev ? '"development"' : '"production"'
       }
     })
     
@@ -97,18 +102,18 @@ function serverRoutes (apiRoutes) {
   });
 }
 
-if (isDev === 'development') {
-  config.devServer = {
-    port: 8083,
-    host: '0.0.0.0',
-    overlay: {
-      errors: true,
-    },
-    hot: true,
-    before(apiRoutes) {
-      serverRoutes(apiRoutes);
-    }
-  };
-}
+// if (isDev === 'development') {
+//   config.devServer = {
+//     port: 8083,
+//     host: '0.0.0.0',
+//     overlay: {
+//       errors: true,
+//     },
+//     hot: true,
+//     before(apiRoutes) {
+//       serverRoutes(apiRoutes);
+//     }
+//   };
+// }
 
 module.exports = config;

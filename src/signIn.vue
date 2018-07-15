@@ -1,32 +1,43 @@
 <template>
   <div class="sign_in_wrapper center">
-    <VueLoading></VueLoading>
     <b-card no-body style="background:rgba(255,255,255,.8);">
       <b-tabs pills card id="sign_in">
         <b-tab title="sign in" active>
-            <b-form-input type="text" class="marginBottom"
-                          v-model="name"
-                          required
-                          placeholder="Enter name">
+          <div class="decs_wrap">
+            <b-form-input type="text"
+              v-model="name"
+              required
+              placeholder="Enter name">
             </b-form-input>
-            <b-form-input type="text" class="marginBottom"
-                          v-model="password"
-                          required
-                          placeholder="Enter password">
+            <div class="decs_detail center">nihao</div>
+          </div>
+          <div class="decs_wrap">
+            <b-form-input type="text"
+              v-model="password"
+              required
+              placeholder="Enter password">
             </b-form-input>
+            <div class="decs_detail center">nihao</div>
+          </div>
             <b-button variant="success" style="width:100%;">Sure?</b-button>
         </b-tab>
         <b-tab title="sign up">
-            <b-form-input type="text" class="marginBottom"
-                          v-model="name"
-                          required
-                          placeholder="Enter name">
+          <div class="decs_wrap">
+            <b-form-input type="text"
+              v-model="name"
+              required
+              placeholder="Enter name">
             </b-form-input>
-            <b-form-input type="text" class="marginBottom"
-                          v-model="password"
-                          required
-                          placeholder="Enter password">
+            <div class="decs_detail center">*nihao*</div>
+          </div>
+          <div class="decs_wrap">
+            <b-form-input type="text"
+              v-model="password"
+              required
+              placeholder="Enter password">
             </b-form-input>
+            <div class="decs_detail center">nihao</div>
+          </div>
             <b-button variant="success" style="width:100%;">Sure?</b-button>
         </b-tab>
       </b-tabs>
@@ -51,6 +62,12 @@ export default {
 </script>
 
 <style lang='scss'>
+.decs_wrap {
+  margin-bottom: 30px;
+  .decs_detail {
+    color: red;
+  }
+}
 .sign_in_wrapper {
   height: 100%;
   width: 100%;

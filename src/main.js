@@ -9,8 +9,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import Vuex from 'vuex';
 import store from './store/store';
+import App from './app.vue';
 import apiServer from './comment/request.js';
 import VueLoading from 'vue-loading-template';
+
 Vue.use(VueLoading);
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
@@ -25,21 +27,22 @@ const router = new VueRouter({
   ]
 });
 
-const root = document.createElement('div');
-document.body.appendChild(root);
+// const root = document.createElement('div');
+// document.body.appendChild(root);
 new Vue({
+  el: '#app',
   render: h => h(app),
   router,
-  store
-}).$mount(root);
+  store,
+  components: { App }
+});//.$mount(root);
 
-
-apiServer({
-  url: 'detail',
-  method: 'get'
-}).then(data => {
-  console.log(data);
-});
+// apiServer({
+//   url: 'detail',
+//   method: 'get'
+// }).then(data => {
+//   console.log(data);
+// });
 // axios.get('/detail', {params: { key: '我的名字事陈学伟' }}).then((data) => {
 //   console.log(data);
 // });

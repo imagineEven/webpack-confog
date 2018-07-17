@@ -19,7 +19,7 @@
             </b-form-input>
             <div class="decs_detail center">nihao</div>
           </div>
-            <b-button variant="success" style="width:100%;">Sure?</b-button>
+            <b-button variant="success" style="width:100%;" @click="onclickOK">Sure?</b-button>
         </b-tab>
         <b-tab title="sign up">
           <div class="decs_wrap">
@@ -55,6 +55,14 @@ export default {
     };
   },
   mounted() {},
+  methods: {
+    onclickOK() {
+      console.log(222);
+      this.$router.push({
+        path:'/footer'
+      })
+    }
+  },
   components: {
     VueLoading
   }

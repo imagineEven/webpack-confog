@@ -14,8 +14,8 @@
 
 <style>
   .footer {
-    height: 100px;
-    width: 100px;
+    height: 1rem;
+    width: 7.5rem;
     background: wheat;
   }
 </style>

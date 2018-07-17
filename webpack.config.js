@@ -1,8 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-//const mongoose = require('mongoose');
-const htmlPlugin = require('html-webpack-plugin');
+const mongoose = require('mongoose');
+//const htmlPlugin = require('html-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 const config = {
   target: 'web',
@@ -12,8 +12,9 @@ const config = {
     path: path.resolve(__dirname, 'dist')
   },
   devServer: {
+    contentBase: path.join(__dirname, 'dist'),
     port: 8083,
-    host: '0.0.0.0',
+    //host: '0.0.0.0',
     overlay: {
       errors: true,
     },
@@ -75,7 +76,7 @@ const config = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new htmlPlugin(),
+    //new htmlPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     // 在开发模式定义全局变量
     // 为什么叫做默认插件 就是因为是webpack自带的插件；
@@ -91,10 +92,10 @@ const config = {
 
 function serverRoutes (apiRoutes) {
   apiRoutes.get('/all/detail', (req, res) => {
-    // mongoose.connect('mongodb://127.0.0.1/stus');
-    // mongoose.connection.once('open', function() {
-    //   console.log('链接成功');
-    // });
+    mongoose.connect('mongodb://192.168.2.140/sing_up');
+    mongoose.connection.once('open', function() {
+      console.log('链接成功');
+    });
     console.log(req.query);
     console.log(typeof req.query);
     console.log(req.query.key);

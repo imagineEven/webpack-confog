@@ -96,25 +96,22 @@ function serverRoutes (apiRoutes) {
     mongoose.connection.once('open', function() {
       console.log('链接成功');
     });
+    // let Schema = mongoose.Schema;
+    // let useSchema = new Schema({
+    //   unseName:  String,
+    //   passWord: Number
+    // });
+    // let userModel = mongoose.model('sing_up', useSchema);
+    // userModel.create({ unseName: 'admain', passWord: 123123 }, function (err) {
+    //   if (!err) {
+    //     console.log('保存成功');
+    //   }
+    // });
     console.log(req.query);
     console.log(typeof req.query);
     console.log(req.query.key);
     res.json('我是webpack里面的数据');
   });
 }
-
-// if (isDev === 'development') {
-//   config.devServer = {
-//     port: 8083,
-//     host: '0.0.0.0',
-//     overlay: {
-//       errors: true,
-//     },
-//     hot: true,
-//     before(apiRoutes) {
-//       serverRoutes(apiRoutes);
-//     }
-//   };
-// }
 
 module.exports = config;

@@ -14,6 +14,7 @@
 
 <style>
   .footer {
+    font-size: 36px;
     height: 1rem;
     width: 7.5rem;
     background: wheat;

@@ -92,7 +92,7 @@ const config = {
 
 function serverRoutes (apiRoutes) {
   apiRoutes.get('/all/detail', (req, res) => {
-    mongoose.connect('mongodb://192.168.2.140/sing_up');
+    mongoose.connect('mongodb://127.0.0.1/sing_up');
     mongoose.connection.once('open', function() {
       console.log('链接成功');
     });

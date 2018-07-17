@@ -38,12 +38,12 @@ new Vue({
   components: { App }
 });//.$mount(root);
 
-apiServer({
-  url: 'detail',
-  method: 'get'
-}).then(data => {
-  console.log(data);
-});
-// axios.get('/detail', {params: { key: '我的名字事陈学伟' }}).then((data) => {
+// apiServer({
+//   url: 'detail',
+//   method: 'get'
+// }).then(data => {
 //   console.log(data);
 // });
+axios.get('/all/detail', {params: { key: '我的名字事陈学伟' }}).then((data) => {
+  console.log(data);
+});

@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const mongoose = require('mongoose');
+const findJson = require('./src/mongoose/mongoose.js');
 //const htmlPlugin = require('html-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 const config = {
@@ -92,25 +92,16 @@ const config = {
 
 function serverRoutes (apiRoutes) {
   apiRoutes.get('/all/detail', (req, res) => {
-    mongoose.connect('mongodb://127.0.0.1/sing_up');
-    mongoose.connection.once('open', function() {
-      console.log('链接成功');
-    });
-    // let Schema = mongoose.Schema;
-    // let useSchema = new Schema({
-    //   unseName:  String,
-    //   passWord: Number
-    // });
-    // let userModel = mongoose.model('sing_up', useSchema);
-    // userModel.create({ unseName: 'admain', passWord: 123123 }, function (err) {
-    //   if (!err) {
-    //     console.log('保存成功');
-    //   }
-    // });
-    console.log(req.query);
+    // 获取Url
+    console.log(req.originalUrl);
+    //console.log(req.query);
     console.log(typeof req.query);
+    // 获取参数
     console.log(req.query.key);
-    res.json('我是webpack里面的数据');
+    new findJson('url', function(data) {
+      res.json(data);
+    });
+
   });
 }
 

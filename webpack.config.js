@@ -1,9 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const findJson = require('./src/mongoose/mongoose.js');
+const mongooseFun = require('./src/mongoose/mongoose.js');
 //const htmlPlugin = require('html-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
+
+let instanceMongoose = new mongooseFun();
 const config = {
   target: 'web',
   entry: './src/main.js',
@@ -89,7 +91,7 @@ const config = {
     //new webpack.HotModuleReplacementPlugin()//热加载插件
   ]
 };
-
+// 总和代表集合名字， url 第二个/字段代表 schema规范， 
 function serverRoutes (apiRoutes) {
   apiRoutes.get('/all/detail', (req, res) => {
     // 获取Url
@@ -98,10 +100,15 @@ function serverRoutes (apiRoutes) {
     console.log(typeof req.query);
     // 获取参数
     console.log(req.query.key);
-    new findJson('url', function(data) {
+    // instanceMongoose.search('url', function(data) {
+    //   console.log('data');
+    //   res.json(data);
+    // });
+    instanceMongoose.paseUrl('all/userInfo?11');
+    instanceMongoose.search('url', function(data) {
+      console.log('data');
       res.json(data);
     });
-
   });
 }
 

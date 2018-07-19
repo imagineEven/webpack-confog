@@ -17,8 +17,15 @@ class mongooseFun {
       },
       photoNumber:Number
     });
+    let userDetailInfor = new this.Schema({
+      id: {
+        type: Number,
+        unique: true
+      }
+    });
     this.SchemaObj = {
-      userInfo: userSchema
+      userInfo: userSchema,
+      userDetail: userDetailInfor
     };
   }
 
@@ -47,14 +54,14 @@ class mongooseFun {
     });
   }
 
-  update(param, callback) {
-    let StudentModel = this.mongoose.model('user', this.userSchema);
-    StudentModel.findOne({name:'猪八戒'}, (err, doc) => {
+  update(callback) {
+    this.StudentModel.findOne(this.oldData, (err, doc) => {
       if(!err){
         //callback(doc);
-        doc.update({$set:{name:'孙悟饭'}}, function (err) {
+        doc.update({$set: this.data}, function (err, newdoc) {
           if (!err) {
             console.log('nihao');
+            callback(newdoc);
           } else {
             console.log('更新失败');
           }
@@ -78,7 +85,7 @@ class mongooseFun {
     });
   }
 
-  parse(originalUrl) {
+  parse(originalUrl, query) {
     // 获取url数组；
     let urlArr;
     if (originalUrl.indexOf('?') > -1) {
@@ -104,12 +111,19 @@ class mongooseFun {
         this.MoedlAndSchema = urlItem;
       }
     }
+    console.log(query.type);
+    if (query.type === '0') {
+      this.oldData = JSON.parse(query.oldData);
+      this.data = JSON.parse(query.data);
+      console.log(query.oldData + '--' + query.data);
+    } else {
+      this.data = query;
+    }
     console.log(this.mongooseMethods + '--' + this.MoedlAndSchema);
   }
 
   start(originalUrl, query, callback) {
-    this.parse(originalUrl);
-    this.data = query;
+    this.parse(originalUrl, query);
     this.StudentModel = this.mongoose.model(this.MoedlAndSchema, this.SchemaObj[this.MoedlAndSchema]);
     this[this.mongooseMethods](callback);
   }

@@ -38,16 +38,16 @@ new Vue({
   components: { App }
 });//.$mount(root);
 
-apiServer({
-  url: '/userInfo/save',
-  method: 'get',
-  params: {
-    name: 'levi',
-    photoNumber: 17601302923
-  }
-}).then(data => {
-  console.log(data);
-});
+// apiServer({
+//   url: '/userInfo/save',
+//   method: 'get',
+//   params: {
+//     name: 'levi',
+//     photoNumber: 17601302923
+//   }
+// }).then(data => {
+//   console.log(data);
+// });
 // axios.get('/all/detail', {params: { key: '我的名字事陈学伟' }}).then((data) => {
 //   console.log(data);
 // });

@@ -100,7 +100,7 @@ function serverRoutes (apiRoutes) {
     //console.log(req.query);
     console.log(typeof req.query);
     // 获取参数
-    console.log(req.query.key);
+    console.log(req.query);
 
     instanceMongoose.start(req.originalUrl, req.query, function(data) {
       res.json(data);
@@ -109,6 +109,19 @@ function serverRoutes (apiRoutes) {
 
   apiRoutes.get('/all/userInfo/search', (req, res) => {
     instanceMongoose.start(req.originalUrl, req.query, function(data) {
+      res.json(data);
+    });
+  });
+
+  apiRoutes.get('/all/userDetail/save', (req, res) => {
+    instanceMongoose.start(req.originalUrl, req.query, function(data) {
+      res.json(data);
+    });
+  });
+
+  apiRoutes.get('/all/userInfo/update', (req, res) => {
+    instanceMongoose.start(req.originalUrl, req.query, function(data) {
+      console.log(req.query);
       res.json(data);
     });
   });

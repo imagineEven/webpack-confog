@@ -63,11 +63,13 @@ export default {
       //   path:'/footer'
       // })
       apiServer({
-        url: '/userInfo/search',
+        url: '/userInfo/update',
         method: 'get',
         params: {
-          name: 'levi'
-        }     
+          type: 0,
+          data: {name: "白痴"},
+          oldData: {name: "周童"}
+        }    
       }).then((data) => {
         console.log(data);
       })

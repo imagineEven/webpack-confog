@@ -39,9 +39,12 @@ new Vue({
 });//.$mount(root);
 
 apiServer({
-  url: 'detail',
+  url: 'userInfo/save',
   method: 'get',
-  params: { key: '我的名字事陈学伟'}
+  params: {
+    name: '陈学伟',
+    photoNumber: 17601302923
+  }
 }).then(data => {
   console.log(data);
 });

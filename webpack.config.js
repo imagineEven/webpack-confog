@@ -91,25 +91,28 @@ const config = {
     //new webpack.HotModuleReplacementPlugin()//热加载插件
   ]
 };
-// 总和代表集合名字， url 第二个/字段代表 schema规范， 
+// /all/userInfo/save
+// all 代表ip地址 userInfo文档的名字 save =>mongoose的方法，
 function serverRoutes (apiRoutes) {
-  apiRoutes.get('/all/detail', (req, res) => {
+  apiRoutes.get('/all/userInfo/save', (req, res) => {
     // 获取Url
     console.log(req.originalUrl);
     //console.log(req.query);
     console.log(typeof req.query);
     // 获取参数
     console.log(req.query.key);
-    // instanceMongoose.search('url', function(data) {
-    //   console.log('data');
-    //   res.json(data);
-    // });
-    instanceMongoose.paseUrl('all/userInfo?11');
-    instanceMongoose.search('url', function(data) {
-      console.log('data');
+    newfun(req.originalUrl, req.query, function(data) {
       res.json(data);
     });
   });
+}
+
+function newfun(originalUrl, query, callback) {
+  let methods = originalUrl.split('?')[0].split('/')[3];
+  console.log(originalUrl.split('?')[0]);
+  console.log(originalUrl.split('?')[0].split('/'));
+  console.log(methods);
+  instanceMongoose[methods](originalUrl, query, callback);
 }
 
 module.exports = config;

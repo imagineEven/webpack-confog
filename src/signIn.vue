@@ -47,6 +47,7 @@
 
 <script>
 import VueLoading  from './components/loading.vue'
+import apiServer from './comment/request.js';
 export default {
   data() {
     return {
@@ -58,8 +59,17 @@ export default {
   methods: {
     onclickOK() {
       console.log(222);
-      this.$router.push({
-        path:'/footer'
+      // this.$router.push({
+      //   path:'/footer'
+      // })
+      apiServer({
+        url: '/userInfo/search',
+        method: 'get',
+        params: {
+          name: 'levi'
+        }     
+      }).then((data) => {
+        console.log(data);
       })
     }
   },

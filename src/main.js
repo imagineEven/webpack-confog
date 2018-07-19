@@ -39,10 +39,10 @@ new Vue({
 });//.$mount(root);
 
 apiServer({
-  url: 'userInfo/save',
+  url: '/userInfo/save',
   method: 'get',
   params: {
-    name: '陈学伟',
+    name: 'levi',
     photoNumber: 17601302923
   }
 }).then(data => {

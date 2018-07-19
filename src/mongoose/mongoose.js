@@ -1,7 +1,7 @@
 class mongooseFun {
   constructor() {
     this.mongoose = require('mongoose');
-    this.mongoose.connect('mongodb://127.0.0.1/Registration_detail', {useMongoClient: true});
+    this.mongoose.connect('mongodb://127.0.0.1/Registration_detail');
     this.mongoose.connection.once('open', function() {
       console.log('链接成功');
     });
@@ -23,8 +23,7 @@ class mongooseFun {
   }
 
   //
-  save(url, json, callback) {
-    this.parse(url, json);
+  save(callback) {
     let stu = new this.StudentModel(this.data);
     stu.save(function (err) {
       if(!err){
@@ -36,9 +35,9 @@ class mongooseFun {
     });
   }
 
-  search(param, callback) {
+  search(callback) {
     //let StudentModel = this.mongoose.model('user', this.userSchema);
-    this.StudentModel.findOne({name:'杀生'}, (err, doc) => {
+    this.StudentModel.findOne(this.data, (err, doc) => {
       if(!err){
         this.data = doc;
         callback(doc);
@@ -79,25 +78,41 @@ class mongooseFun {
     });
   }
 
-  // 解析url 和数据数据 然后将所有的保存
-  parse(url, json) {
-    this.parseUrl(url);
-    this.data = json;
-  }
-
-  parseUrl(url) {
-    let all;
-    if (url.indexOf('?') > -1) {
-      all = url.split('?')[0];
+  parse(originalUrl) {
+    // 获取url数组；
+    let urlArr;
+    if (originalUrl.indexOf('?') > -1) {
+      urlArr = originalUrl.split('?')[0].split('/');
     } else {
-      all = url;
+      urlArr = originalUrl.split('/');
     }
-    let modelName = all.split('/')[2];
-    let SchemaName = all.split('/')[2];
-    console.log(modelName + '--' + SchemaName);
-    this.StudentModel = this.mongoose.model(modelName, this.SchemaObj[SchemaName]);
+
+    // 获取保存的方法，
+    let methodsArr = ['save', 'search', 'remove', 'update'];
+    for (let urlItme of urlArr) {
+      for (let methodsItem of methodsArr) {
+        if (urlItme === methodsItem) {
+          this.mongooseMethods = methodsItem;
+        }
+      }
+    }
+
+    // 获取集合名 跟 schema;
+    let removeArr = ['', this.mongooseMethods, 'all'];
+    for (let urlItem of urlArr) {
+      if (removeArr.indexOf(urlItem) === -1 && urlItem) {
+        this.MoedlAndSchema = urlItem;
+      }
+    }
+    console.log(this.mongooseMethods + '--' + this.MoedlAndSchema);
   }
 
+  start(originalUrl, query, callback) {
+    this.parse(originalUrl);
+    this.data = query;
+    this.StudentModel = this.mongoose.model(this.MoedlAndSchema, this.SchemaObj[this.MoedlAndSchema]);
+    this[this.mongooseMethods](callback);
+  }
 }
 
 module.exports =  mongooseFun;

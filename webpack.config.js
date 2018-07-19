@@ -101,18 +101,17 @@ function serverRoutes (apiRoutes) {
     console.log(typeof req.query);
     // 获取参数
     console.log(req.query.key);
-    newfun(req.originalUrl, req.query, function(data) {
+
+    instanceMongoose.start(req.originalUrl, req.query, function(data) {
       res.json(data);
     });
   });
-}
 
-function newfun(originalUrl, query, callback) {
-  let methods = originalUrl.split('?')[0].split('/')[3];
-  console.log(originalUrl.split('?')[0]);
-  console.log(originalUrl.split('?')[0].split('/'));
-  console.log(methods);
-  instanceMongoose[methods](originalUrl, query, callback);
+  apiRoutes.get('/all/userInfo/search', (req, res) => {
+    instanceMongoose.start(req.originalUrl, req.query, function(data) {
+      res.json(data);
+    });
+  });
 }
 
 module.exports = config;

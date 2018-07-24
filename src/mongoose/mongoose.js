@@ -31,7 +31,8 @@ class mongooseFun {
 
   //
   save(callback) {
-    let stu = new this.StudentModel(this.data);
+    let stu = new this.StudentModel(this.newData);
+    console.log(this.newData);
     stu.save(function (err) {
       if(!err){
         callback('插入成功');
@@ -44,9 +45,9 @@ class mongooseFun {
 
   search(callback) {
     //let StudentModel = this.mongoose.model('user', this.userSchema);
-    this.StudentModel.findOne(this.data, (err, doc) => {
+    this.StudentModel.findOne(this.newData, (err, doc) => {
       if(!err){
-        this.data = doc;
+        this.newData = doc;
         callback(doc);
       } else {
         callback('搜索失败');
@@ -55,14 +56,15 @@ class mongooseFun {
   }
 
   update(callback) {
-    this.StudentModel.findOne(this.oldData, (err, doc) => {
-      if(!err){
+    this.StudentModel.findOne(this.oldData, (findOneErr, doc) => {
+      if(!findOneErr){
         //callback(doc);
-        doc.update({$set: this.data}, function (err, newdoc) {
-          if (!err) {
-            console.log('nihao');
+        doc.update({$set: this.newData}, function (updateErr, newdoc) {
+          if (!updateErr) {
+            console.log('更新成功');
             callback(newdoc);
           } else {
+            console.log(updateErr);
             console.log('更新失败');
           }
         });
@@ -76,7 +78,7 @@ class mongooseFun {
         //remove() 删除文档
         doc.remove(function (err, doc) {
           if (!err) {
-            console.log(222);
+            console.log('删除成功');
           } else {
             callback('删除失败');
           }
@@ -111,13 +113,13 @@ class mongooseFun {
         this.MoedlAndSchema = urlItem;
       }
     }
-    console.log(query.type);
-    if (query.type === '0') {
-      this.oldData = JSON.parse(query.oldData);
-      this.data = JSON.parse(query.data);
-      console.log(query.oldData + '--' + query.data);
+
+    this.data = JSON.parse(query.data);
+    if (this.data.type) {
+      this.newData = this.data.newData;
     } else {
-      this.data = query;
+      this.newData = this.data.newData;
+      this.oldData = this.data.oldData;
     }
     console.log(this.mongooseMethods + '--' + this.MoedlAndSchema);
   }

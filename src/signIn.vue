@@ -51,13 +51,15 @@ import apiServer from './comment/request.js';
 export default {
   data() {
     return {
-      name: "",
-      password: ""
+      name: 'lala',
+      password: "",
+      data: ''
     };
   },
   mounted() {},
   methods: {
     onclickOK() {
+      this.JSONstringify({type: 0, newData: {name: '周童' }, oldData: {name: '白痴' }})
       console.log(222);
       // this.$router.push({
       //   path:'/footer'
@@ -66,13 +68,14 @@ export default {
         url: '/userInfo/update',
         method: 'get',
         params: {
-          type: 0,
-          data: {name: "白痴"},
-          oldData: {name: "周童"}
+          data: this.data
         }    
       }).then((data) => {
         console.log(data);
       })
+    },
+    JSONstringify(value) {
+      this.data = JSON.stringify(value)
     }
   },
   components: {

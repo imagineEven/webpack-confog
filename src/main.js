@@ -13,20 +13,20 @@ import App from './app.vue';
 import apiServer from './comment/request.js';
 import VueLoading from 'vue-loading-template';
 import axios from 'axios';
-
+import router from './router/router.js';
 Vue.use(VueLoading);
-Vue.use(VueRouter);
+//Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(Vuex);
 require('./comment/test.js');
 
-const router = new VueRouter({
-  mode: 'history',
-  routes: [
-    {path: '/', component:home},
-    {path: '/footer', component:fo}
-  ]
-});
+// const router = new VueRouter({
+//   mode: 'history',
+//   routes: [
+//     {path: '/', component:home},
+//     {path: '/footer', component:fo}
+//   ]
+// });
 
 // const root = document.createElement('div');
 // document.body.appendChild(root);

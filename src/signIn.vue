@@ -19,7 +19,7 @@
             </b-form-input>
             <div class="decs_detail center">nihao</div>
           </div>
-            <b-button variant="success" style="width:100%;" @click="onclickOK">Sure?</b-button>
+            <b-button variant="success" style="width:100%;" @click="onclickOK">登陆</b-button>
         </b-tab>
         <b-tab title="sign up">
           <div class="decs_wrap">
@@ -38,7 +38,7 @@
             </b-form-input>
             <div class="decs_detail center">nihao</div>
           </div>
-            <b-button variant="success" style="width:100%;">Sure?</b-button>
+            <b-button variant="success" style="width:100%;">{{ count }}</b-button>
         </b-tab>
       </b-tabs>
     </b-card>
@@ -46,36 +46,43 @@
 </template>
 
 <script>
-import VueLoading  from './components/loading.vue'
-import apiServer from './comment/request.js';
+import VueLoading from "./components/loading.vue";
+import apiServer from "./comment/request.js";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
-      name: 'lala',
+      name: "",
       password: "",
-      data: ''
+      data: ""
     };
   },
   mounted() {},
+  computed: {
+    ...mapState(["count"])
+  },
   methods: {
     onclickOK() {
-      this.JSONstringify({type: 0, newData: {name: '周童' }, oldData: {name: '白痴' }})
-      console.log(222);
-      // this.$router.push({
-      //   path:'/footer'
-      // })
-      apiServer({
-        url: '/userInfo/update',
-        method: 'get',
-        params: {
-          data: this.data
-        }    
-      }).then((data) => {
-        console.log(data);
+      // this.JSONstringify({
+      //   type: 0,
+      //   newData: { name: "周童" },
+      //   oldData: { name: "白痴" }
+      // });
+      this.$router.push({
+        path:'/home'
       })
+      // apiServer({
+      //   url: "/userInfo/update",
+      //   method: "get",
+      //   params: {
+      //     data: this.data
+      //   }
+      // }).then(data => {
+      //   console.log(data);
+      // });
     },
     JSONstringify(value) {
-      this.data = JSON.stringify(value)
+      this.data = JSON.stringify(value);
     }
   },
   components: {
@@ -104,7 +111,6 @@ export default {
 }
 .sign_in_detail {
   width: 80%;
-
 }
 .sign_in_name {
   margin-bottom: 30px;
@@ -115,8 +121,8 @@ export default {
   width: 400px;
 
   .card-header {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
   }
 
   .nav-item {

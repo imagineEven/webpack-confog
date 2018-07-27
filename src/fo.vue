@@ -1,27 +1,25 @@
 <template>
   <div class="footer">
-    <div class="footer-content" @click="onClick">
-      我是footer里的组件
+    <div> {{ navDetail.name }} </div>
+    <div v-for="item in navDetail.detail" @click="onClick">
+      <div v-show="item.hide">{{ item.name }}</div>
     </div>
-    <router-view>
-
-    </router-view>
   </div>
 </template>
 
 <script>
   export default {
     data() {
-      return {}
+      return {
+        show: false
+      }
     },
     mounted() {
       console.log(this.$router)
     },
     methods: {
       onClick() {
-        this.$router.push({
-          path: '/footer/test'
-        })
+        this.show = !this.show
       }
     }
   }

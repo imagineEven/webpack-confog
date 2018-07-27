@@ -14,12 +14,18 @@ import apiServer from './comment/request.js';
 import VueLoading from 'vue-loading-template';
 import axios from 'axios';
 import router from './router/router.js';
+import obj1 from './comment/test.js';
+import {obj} from './comment/test.js';
+console.log('obj1');
+console.log(obj1);
+console.log('obj');
+console.log(obj);
 Vue.use(VueLoading);
 //Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(Vuex);
 require('./comment/test.js');
-
+require('./components/public.js');
 // const router = new VueRouter({
 //   mode: 'history',
 //   routes: [
@@ -37,7 +43,6 @@ new Vue({
   store,
   components: { App }
 });//.$mount(root);
-
 // apiServer({
 //   url: '/userInfo/save',
 //   method: 'get',

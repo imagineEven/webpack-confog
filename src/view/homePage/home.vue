@@ -1,44 +1,65 @@
 <template>
-<div>
-  <div @click.self="onClick">
-    我是home组件的内容
-    <div v-show="isShow">
-      下面好痒啊
+<div class="home_wrap">
+  <!-- 头部导航 -->
+  <div class="home_header">
+    <div class="nav_handle center" @click="changeNav">
+      <img src="" alt="nav">
     </div>
   </div>
-  <Navigation :navDetail = "navDetail"></Navigation>
-  <Navigation :navDetail = "navDetail"></Navigation>
-  <Navigation :navDetail = "navDetail"></Navigation>
-  <Navigation :navDetail = "navDetail"></Navigation>
+
+  <!-- nav导航 -->
+  <div class="nav_wrap" :style="{ width: navWidth }">
+    <div class="nav_detail center" v-show="navShow">
+      
+    </div>
+  </div>
 </div>
 </template>
 
 <script>
+import { mapActions, mapGetters} from 'vuex'
   export default {
     data() {
       return {
-        isShow: false,
-        navDetail: {
-          name: '会员管理',
-          detail: [
-            {hide: false, name: '张三', path: '/home/test'},
-            {hide: false, name: 'lisi', path: '/home/test'}
-          ]
-        }
+        width: '160px'
       }
     },
     methods: {
-      onClick(event) {
-        console.log(event)
-        this.isShow = !this.isShow
-      }
+      ...mapActions(['changeNav']),
+    },
+    computed: {
+      ...mapGetters(['navWidth', 'navShow']),
     },
     mounted() {
-      console.log(this.$router)
+      console.log(this.$store)
     }
   }
 </script>
 
-<style scoped>
-
+<style scoped lang='scss'>
+  .home_wrap{
+    height: 100%;
+    width: 100%;
+    background: antiquewhite;
+  }
+  .home_header {
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    background: blueviolet;
+    padding: 20px;
+  }
+  .nav_wrap {
+    height: 100%;
+    background: yellow;
+    padding: 20px;
+  }
+  .nav_handle {
+    height: 60px;
+    width: 60px;
+  }
+  .nav_detail{
+    height: 100px;
+    background: violet;
+  }
 </style>

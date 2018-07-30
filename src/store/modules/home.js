@@ -1,16 +1,29 @@
-let home = {
+let navWidth = {
   state: {
-    count: 12
+    navWidth: '160px',
+    navShow: true
   },
   mutations: {
-    ADD_COUNT(state) {
-      state.count++;
+    CHANGE_NAVWIDTH(state) {
+      if (state.navShow) {
+        state.navWidth = '60px';
+        state.navShow = !state.navShow;
+      } else {
+        state.navWidth = '160px';
+        state.navShow = !state.navShow;
+      }
+
     }
   },
   actions: {
-    addcount({commit}) {
-      commit('ADD_COUNT');
+    changeNav({commit}) {
+      commit('CHANGE_NAVWIDTH');
     }
+  }
+};
+let home = {
+  modules: {
+    nav: navWidth
   }
 };
 

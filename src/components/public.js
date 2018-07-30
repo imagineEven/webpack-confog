@@ -15,8 +15,6 @@ Vue.component('Navigation', {
     }
   },
   mounted() {
-    console.log(11);
-    console.log(this.navDetail);
   },
   template:'<div><div @click="onClick">{{ navDetail.name }}</div><br><div v-for="item in navDetail.detail" v-show="show"><div v-show="!item.hide">{{ item.name }}</div></div></div>'
 });

@@ -2,7 +2,7 @@ import Vue  from 'vue';
 
 Vue.component('Navigation', {
   props: [
-    'navDetail'
+    'navObj'
   ],
   data(){
     return {

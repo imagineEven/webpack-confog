@@ -8,7 +8,7 @@ let homeChildren = [
   {
     path: '/home/test1',
     component: test,
-    groundName: '主页',
+    groupName: '主页',
     meta: {
       path: '/home/test1',
       cname: '员工管理',
@@ -18,7 +18,7 @@ let homeChildren = [
   {
     path: '/home/test2',
     component: test,
-    groundName: '主页',
+    groupName: '主页',
     meta: {
       path: '/home/test2',
       cname: '会员管理',
@@ -28,7 +28,7 @@ let homeChildren = [
   {
     path: '/home/test3',
     component: test,
-    groundName: '详情页',
+    groupName: '详情页',
     meta: {
       path: '/home/test3',
       cname: '账号管理',
@@ -36,6 +36,11 @@ let homeChildren = [
     }
   }
 ];
+
+export {
+  homeChildren
+};
+
 let navDetail = [];
 const router = new VueRouter({
   mode: 'history',
@@ -54,5 +59,6 @@ const router = new VueRouter({
     }
   ]
 });
+
 
 export default router;

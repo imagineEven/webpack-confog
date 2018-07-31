@@ -1,6 +1,5 @@
 let getters = {
-  navWidth: state => state.home.nav.navWidth,
-  navShow: state => state.home.nav.navShow
+  navData: state => state.home.nav.navData
 };
 
 export default getters;

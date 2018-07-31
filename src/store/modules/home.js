@@ -1,7 +1,7 @@
-let navWidth = {
+import { parsedDate } from '../../router/parseRouter.js';
+let navData = {
   state: {
-    navWidth: '160px',
-    navShow: true
+    navData: parsedDate
   },
   mutations: {
     CHANGE_NAVWIDTH(state) {
@@ -23,7 +23,7 @@ let navWidth = {
 };
 let home = {
   modules: {
-    nav: navWidth
+    nav: navData
   }
 };
 

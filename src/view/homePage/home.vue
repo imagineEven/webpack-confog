@@ -22,7 +22,6 @@
 
 <script>
 import { mapActions, mapGetters} from 'vuex'
-//import { parsedDate } from '../../router/parseRouter.js'
   export default {
     data() {
       return {

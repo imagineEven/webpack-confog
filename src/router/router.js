@@ -52,7 +52,7 @@ const router = new VueRouter({
     },
     {
       path: '/home',
-      component: home,
+      component:() => import('../view/homePage/recursionWraper.vue'),
       name: 'Home',
       children: homeChildren,
       navDetail: navDetail

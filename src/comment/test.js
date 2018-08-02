@@ -1,4 +1,22 @@
 let obj = 1;
 let obj1 = 2;
-export {obj};
+
+
+let riskdetail = [
+  {
+    name: 'even',
+    detail: [
+      {
+        age: 12,
+        lala: [
+          {},
+          {}
+        ]
+      },
+      {}
+    ]
+  }
+];
+
+export {obj, riskdetail};
 export default obj1;

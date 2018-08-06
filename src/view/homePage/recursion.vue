@@ -1,20 +1,26 @@
 <template>
   <div class="wraper">
-    <div class="title">{{ detail.name }}</div>
-    <div class="content">{{ detail.detail.name }}</div>
+    <div v-for="item in data" class="title">
+      <div @click="onClick">
+        {{ item.name }}
+      </div>
+      <recurison :data="item.children" v-show="isShow"></recurison>
+    </div>
   </div>  
 </template>
 
 <script>
   export default {
+    name: "recurison",
+    props: ['data'],
     data() {
       return {
-        detail: {
-          name: 'even',
-          detail: {
-            name: 'tony'
-          }
-        }
+        isShow: false
+      }
+    },
+    methods: {
+      onClick() {
+        this.isShow = !this.isShow
       }
     }
   }

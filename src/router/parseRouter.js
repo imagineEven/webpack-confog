@@ -1,33 +1,74 @@
-import { homeChildren } from './router.js';
-// import router from './router.js';
-console.log(homeChildren);
-//console.log(router);
-// 循环数组 得到去重的数组
-let noRepetArr = [];
-homeChildren.forEach(item => {
-  if (noRepetArr.indexOf(item.groupName) === -1) {
-    noRepetArr.push(item.groupName);
-  }
-});
-console.log(noRepetArr);
-// [item: [], item: []];
-let parsedDate = [];
-noRepetArr.forEach(item => {
-  let obj = {};
-  obj.name = item;
-  obj.detail = [];
-  parsedDate.push(obj);
-});
 
-homeChildren.forEach(homeItem => {
-  for (let DateItem of parsedDate) {
-    if (homeItem.groupName === DateItem.name) {
-      homeItem.meta.path = homeItem.path;
-      DateItem.detail.push(homeItem.meta);
-    }
+let navDetail = [
+  {
+    name: '主页',
+    hide: true,
+    patch: '',
+    children: [
+      {
+        name: '人事行政部',
+        hide: true,
+        path: '/home/people',
+        children: [
+          {
+            name: '主管',
+            hide: true,
+            path: '/home/test01',
+          },
+          {
+            name: '员工',
+            hide: true,
+            path: '/home/test02'
+          },
+          {
+            name: '傻逼',
+            hide: true,
+            path: '/home/test03'
+          }
+        ]
+      },
+      {
+        name: '技术研发部',
+        hide: true,
+        path: '',
+        children: [
+          {
+            name: '前端',
+            hide: false,
+            path: ''
+          },
+          {
+            name: '后台',
+            hide: true,
+            path: ''
+          },
+          {
+            name: '产品',
+            hide: true,
+            path: ''
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: '详情页',
+    hide: true,
+    path: '',
+    children: [
+      {
+        name: '积分',
+        hide: true,
+        path: ''
+      },
+      {
+        name: '商城',
+        hide: true,
+        path: ''
+      }
+    ]
   }
-});
-console.log(parsedDate);
+];
 export {
-  parsedDate
+  navDetail
 };

@@ -1,7 +1,16 @@
 import { parsedDate } from '../../router/parseRouter.js';
-let navData = {
+
+let home = {
   state: {
-    navData: parsedDate
+    navData: parsedDate,
+    progress: [
+      {
+        name: '主页',
+      },
+      {
+        name: '详情页'
+      }
+    ]
   },
   mutations: {
     CHANGE_NAVWIDTH(state) {
@@ -19,11 +28,6 @@ let navData = {
     changeNav({commit}) {
       commit('CHANGE_NAVWIDTH');
     }
-  }
-};
-let home = {
-  modules: {
-    nav: navData
   }
 };
 

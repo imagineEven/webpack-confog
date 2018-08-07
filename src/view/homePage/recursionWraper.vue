@@ -24,7 +24,13 @@ export default {
               children: [
                 {
                   id: 111,
-                  name: "levi11"
+                  name: "levi11",
+                  children: [
+                    {
+                      id: 1111,
+                      name: "levi111"
+                    }
+                  ]
                 }
               ]
             },

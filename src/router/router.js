@@ -5,35 +5,30 @@ import home from '../view/homePage/home.vue';
 import test from '../view/homePage/test.vue';
 Vue.use(VueRouter);
 let homeChildren = [
-  {
-    path: '/home/test1',
-    component: test,
-    groupName: '主页',
-    meta: {
-      path: '/home/test1',
-      cname: '员工管理',
-      hide: false
-    }
+  { 
+    path: '/home/home',
+    cname: '主页',
+    component:() => import('./../view/homeInfo/home.vue')
+  },
+  { 
+    path: '/home/people',
+    cname: '人事行政部',
+    component:() => import('./../view/homeInfo/people.vue')
+  },
+  { 
+    path: '/home/test01',
+    cname: '',
+    component:() => import('./../view/homeInfo/test01.vue')
   },
   {
-    path: '/home/test2',
-    component: test,
-    groupName: '主页',
-    meta: {
-      path: '/home/test2',
-      cname: '会员管理',
-      hide: false
-    }
+    path: '/home/test02',
+    cname: '',
+    component:() => import('./../view/homeInfo/test02.vue')
   },
   {
-    path: '/home/test3',
-    component: test,
-    groupName: '详情页',
-    meta: {
-      path: '/home/test3',
-      cname: '账号管理',
-      hide: false
-    }
+    path: '/home/test03',
+    cname: '', 
+    component:() => import('./../view/homeInfo/test03.vue')
   }
 ];
 
@@ -52,7 +47,7 @@ const router = new VueRouter({
     },
     {
       path: '/home',
-      component:() => import('../view/homePage/recursionWraper.vue'),
+      component:() => import('../view/homePage/home.vue'),
       name: 'Home',
       children: homeChildren,
       navDetail: navDetail

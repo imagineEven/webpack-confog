@@ -2,7 +2,8 @@ import Vue  from 'vue';
 import VueRouter from 'vue-router';
 import signIn from '../signIn.vue';
 import home from '../view/homePage/home.vue';
-import test from '../view/homePage/test.vue';
+import technology from './../view/homeInfo/test03.vue';
+import people from './../view/homeInfo/people.vue';
 Vue.use(VueRouter);
 let homeChildren = [
   { 
@@ -13,7 +14,8 @@ let homeChildren = [
   { 
     path: '/home/people',
     cname: '人事行政部',
-    component:() => import('./../view/homeInfo/people.vue')
+    //component:() => import('./../view/homeInfo/people.vue')
+    component: people
   },
   { 
     path: '/home/test01',
@@ -29,6 +31,12 @@ let homeChildren = [
     path: '/home/test03',
     cname: '', 
     component:() => import('./../view/homeInfo/test03.vue')
+  },
+  {
+    path: '/home/technology',
+    cname: '', 
+    //component:() => import('./../view/homeInfo/test03.vue')
+    component: technology
   }
 ];
 

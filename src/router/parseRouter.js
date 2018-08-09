@@ -30,7 +30,7 @@ let navDetail = [
       {
         name: '技术研发部',
         hide: true,
-        path: '',
+        path: '/home/technology',
         children: [
           {
             name: '前端',

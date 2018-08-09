@@ -16,7 +16,7 @@ import axios from 'axios';
 import router from './router/router.js';
 require('./router/parseRouter.js');
 Vue.use(VueLoading);
-//Vue.use(VueRouter);
+Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(Vuex);
 require('./comment/test.js');

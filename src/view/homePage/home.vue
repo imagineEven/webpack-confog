@@ -19,7 +19,6 @@
         {{ item.name }}
       </div>
     </div>
-
     <div>
       <router-view></router-view>
     </div>
@@ -55,6 +54,14 @@ export default {
   components: {
     tree
   }
+  // watch: {
+  //   '$route' (to, from) {
+  //     //this.$router.go(0);
+  //     console.log(111)
+  //     console.log(to)
+  //     console.log(from)
+  //   }
+  // }
 };
 </script>
 

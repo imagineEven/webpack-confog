@@ -6,12 +6,12 @@ import technology from './../view/homeInfo/test03.vue';
 import people from './../view/homeInfo/people.vue';
 Vue.use(VueRouter);
 let homeChildren = [
-  { 
+  {
     path: '/home/home',
     cname: '主页',
     component:() => import('./../view/homeInfo/home.vue')
   },
-  { 
+  {
     path: '/home/people',
     cname: '人事行政部',
     //component:() => import('./../view/homeInfo/people.vue')
@@ -59,6 +59,11 @@ const router = new VueRouter({
       name: 'Home',
       children: homeChildren,
       navDetail: navDetail
+    },
+    {
+      path: '/taskCenter',
+      component:() => import('../view/task/task.vue'),
+      name: 'taskCenter'
     }
   ]
 });

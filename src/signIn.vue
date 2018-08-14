@@ -69,7 +69,7 @@ export default {
       //   oldData: { name: "白痴" }
       // });
       this.$router.push({
-        path:'/home'
+        path:'/taskCenter'
       })
       // apiServer({
       //   url: "/userInfo/update",

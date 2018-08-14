@@ -14,11 +14,14 @@ import apiServer from './comment/request.js';
 import VueLoading from 'vue-loading-template';
 import axios from 'axios';
 import router from './router/router.js';
-require('./router/parseRouter.js');
+import VueAwesomeSwiper from 'vue-awesome-swiper';
+import'../src/style/swiper.min.css';
+require('swiper/dist/css/swiper.css');
 Vue.use(VueLoading);
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(Vuex);
+Vue.use(VueAwesomeSwiper);
 require('./comment/test.js');
 require('./components/public.js');
 // const router = new VueRouter({
